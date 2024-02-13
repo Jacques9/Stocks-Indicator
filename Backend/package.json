@@ -14,5 +14,11 @@
     "elysia": "^0.8.17",
     "mongoose": "^8.1.2",
     "prisma": "^5.9.1"
+  }, 
+  "scripts": {
+    "dev": "bun --watch src/server.ts",
+    "build": "bun build src/server.ts",
+    "start": "NODE_ENV=production bun src/server.ts",
+    "test": "bun test"
   }
 }
