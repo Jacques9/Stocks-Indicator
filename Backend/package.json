@@ -19,9 +19,9 @@
     "prisma": "^5.9.1"
   },
   "scripts": {
-    "dev": "bun --watch api.ts",
-    "build": "bun build api.ts",
-    "start": "NODE_ENV=production bun api.ts",
+    "dev": "bun --watch ./api/api.ts",
+    "build": "bun build ./api/api.ts",
+    "start": "NODE_ENV=production bun ./api/api.ts",
     "test": "bun test"
   }
 }
