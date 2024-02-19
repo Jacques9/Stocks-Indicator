@@ -8,7 +8,12 @@ datasource db {
 }
 
 model Users {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String @unique
-  name  String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  username  String
+  password  String
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+  // watchlist Stock[]
+  // portfolio Stock[]
 }
