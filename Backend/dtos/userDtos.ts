@@ -21,4 +21,3 @@ export class LoginDTO {
         this.password = password;
     }
 }
-
