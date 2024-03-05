@@ -1,16 +1,22 @@
 {
   "name": "backend",
-  "version": "1.0.50",
-  "module": "src/index.js",
-  "dependencies": {
-    "@elysiajs/cors": "^0.8.0",
-    "@elysiajs/swagger": "^0.8.5",
-    "@prisma/client": "^5.10.2",
-    "elysia": "latest"
-  },
+  "module": "api.ts",
+  "type": "module",
   "devDependencies": {
-    "bun-types": "latest",
-    "prisma": "^5.10.2"
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@elysiajs/cookie": "^0.8.0",
+    "@elysiajs/cors": "^0.8.0",
+    "@elysiajs/jwt": "^0.8.0",
+    "@elysiajs/swagger": "^0.8.5",
+    "@prisma/client": "^5.9.1",
+    "elysia": "^0.8.17",
+    "elysia-helmet": "^1.0.2",
+    "prisma": "^5.9.1"
   },
   "scripts": {
     "dev": "bun --hot ./api/api.ts",

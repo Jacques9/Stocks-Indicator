@@ -7,13 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
+  @@map("Users")
+  
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String   @unique
   username  String
   password  String
-  createdAt DateTime @default(now()) @map("createdAt")
-  updatedAt DateTime @updatedAt @map("updatedAt")
+  role      Role     @default(USER)
   // watchlist Stock[]
   // portfolio Stock[]
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @default(now()) @updatedAt @map("updatedAt")
+
+}
+
+// model News {
+//   @@map("News")
+//   id        String @id @default(auto()) @map("_id") @db.ObjectId
+// }
+
+enum Role {
+  USER
+  PRO
+  ADMIN
 }
