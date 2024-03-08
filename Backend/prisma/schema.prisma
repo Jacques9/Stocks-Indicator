@@ -8,8 +8,6 @@ datasource db {
 }
 
 model User {
-  @@map("Users")
-  
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String   @unique
   username  String
@@ -20,12 +18,24 @@ model User {
   createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @default(now()) @updatedAt @map("updatedAt")
 
+  @@map("Users")
 }
 
-// model News {
-//   @@map("News")
-//   id        String @id @default(auto()) @map("_id") @db.ObjectId
-// }
+model News {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  headline     String   @unique
+  content      String
+  stock_symbol String[]
+  time_added   DateTime @default(now()) @map("timeAdded")
+
+  @@map("News")
+}
+
+model Stock {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  @@map("Stocks")
+}
 
 enum Role {
   USER

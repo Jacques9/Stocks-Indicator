@@ -1,44 +1,24 @@
-import { clerkMiddleware, getAuth } from '@hono/clerk-auth';
 import { Hono } from 'hono'
+import {
+    registerUser,
+} from '../services/users.services';
 
-
-const usersRouter = new Hono().use('*', clerkMiddleware())
+const usersRouter = new Hono()
 
 usersRouter.post("/register", async (c) => {
-    const { username, email, password } = await c.req.json()
-    const auth = getAuth(c)
+    const { username, email, password } = await c.req.json();
 
-    console.log(auth?.userId)
+    await registerUser({username, email, password});
 
-
-    const clerkClient = c.get('clerk')
-
-        const user = await clerkClient.users.createUser(
-            {
-                emailAddress: [email],
-                password: password
-            }
-        )
-
-        return c.json({
-            user,
-        })
+    return c.text("Account created succesfully.", 200);
 })
 
 usersRouter.post("/login", async (c) => {
-    const { username, email, password } = await c.req.json()
-    const auth = getAuth(c)
-    console.log(auth)
-    if (!auth?.userId) {
-        return c.json({
-          message: 'You are not logged in.'
-        })
-      }
-    
-      return c.json({
-        message: 'You are logged in!',
-        userId: auth.userId
-    })
+})
+
+usersRouter.onError((err, c) => {
+    // console.error(`${err}`)
+    return c.text(`${err}`, 500)
 })
 
 export default usersRouter;
