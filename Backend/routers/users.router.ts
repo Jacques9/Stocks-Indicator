@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+
 import {
     registerUser,
 } from '../services/users.services';
@@ -8,12 +9,12 @@ const usersRouter = new Hono()
 usersRouter.post("/register", async (c) => {
     const { username, email, password } = await c.req.json();
 
-    await registerUser({username, email, password});
+    await registerUser({ username, email, password });
 
     return c.text("Account created succesfully.", 200);
 })
 
-usersRouter.post("/login", async (c) => {
+usersRouter.get('/', async (c) => {
 })
 
 usersRouter.onError((err, c) => {

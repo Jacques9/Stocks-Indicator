@@ -3,6 +3,8 @@
     "dev": "bun run --hot api/api.ts"
   },
   "dependencies": {
+    "@clerk/backend": "^0.38.3",
+    "@hono/clerk-auth": "^1.0.1",
     "@hono/zod-openapi": "^0.9.8",
     "@prisma/client": "^5.10.2",
     "hono": "^4.0.10"
